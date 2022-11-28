@@ -7,3 +7,4 @@ chsh /usr/bin/zsh
 
 curl -L git.io/antigen > antigen.zsh
 
+wget https://raw.githubusercontent.com/lkytal/bash/main/.zshrc > .zshrc
