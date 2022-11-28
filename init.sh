@@ -5,8 +5,6 @@ sudo apt install language-pack-zh-hans language-pack-zh-hans-base fzf avahi-daem
 
 sudo update-locale LANG=en_US.UTF-8
 
-chsh /usr/bin/zsh
-
 curl -L git.io/antigen > antigen.zsh
 
 wget https://raw.githubusercontent.com/lkytal/bash/main/.zshrc -O .zshrc
@@ -14,3 +12,6 @@ wget https://raw.githubusercontent.com/lkytal/bash/main/.zshrc -O .zshrc
 git clone git://github.com/wting/autojump.git
 cd autojump
 ./install.py or ./uninstall.py
+
+
+chsh /usr/bin/zsh
