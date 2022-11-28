@@ -9,7 +9,7 @@ curl -L git.io/antigen > antigen.zsh
 
 wget https://raw.githubusercontent.com/lkytal/bash/main/.zshrc -O .zshrc
 
-git clone git://github.com/wting/autojump.git
+git clone https://github.com/wting/autojump.git
 cd autojump
 ./install.py or ./uninstall.py
 
