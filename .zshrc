@@ -3,8 +3,8 @@ bindkey '\e[4~' end-of-line
 bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line
 
-#[[ -s /root/.autojump/etc/profile.d/autojump.sh ]] && source /root/.autojump/etc/profile.d/autojump.sh
-. /usr/share/autojump/autojump.sh
+[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
+#. /usr/share/autojump/autojump.sh
 
 autoload -U compinit && compinit -u
 
