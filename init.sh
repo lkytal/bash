@@ -15,4 +15,4 @@ cd autojump
 
 sudo apt install fzf
 
-chsh `whoami` -scan /usr/bin/zsh
+chsh `whoami` -s /usr/bin/zsh
