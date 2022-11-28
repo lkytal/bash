@@ -11,8 +11,8 @@ wget https://raw.githubusercontent.com/lkytal/bash/main/.zshrc -O .zshrc
 
 git clone https://github.com/wting/autojump.git
 cd autojump
-./install.py or ./uninstall.py
+./install.py
 
-apt install fzf
+sudo apt install fzf
 
-chsh /usr/bin/zsh
+chsh `whoami` -scan /usr/bin/zsh
