@@ -3,7 +3,7 @@ cd ~
 sudo apt update
 sudo apt install language-pack-zh-hans language-pack-zh-hans-base fzf avahi-daemon git vim wget curl zsh libnss-mdns mdns-scan python3 python-is-python3
 
-update-locale LANG=en_US.UTF-8
+sudo update-locale LANG=en_US.UTF-8
 
 chsh /usr/bin/zsh
 
