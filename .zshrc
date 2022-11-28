@@ -48,7 +48,6 @@ alias s='screen'
 alias sl='screen -ls'
 alias sr='screen -r'
 
-alias ls='lsd'
 alias top='LANG=en_US.utf8 TERM=xterm-256color gtop'
 
 export PATH="$HOME/.local/bin:$PATH"

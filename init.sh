@@ -14,5 +14,6 @@ cd autojump
 ./install.py
 
 sudo apt install fzf
+curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 
 chsh `whoami` -s /usr/bin/zsh
