@@ -43,6 +43,7 @@ eval "$(zoxide init zsh)"
 
 alias dstop='docker stop'
 alias drs='docker restart'
+alias drun='docker run -d --restart=unless-stopped -e PUID=1000 -e PGID=1000 -e TZ=America/Indiana/Indianapolis'
 
 alias s='screen'
 alias sl='screen -ls'
