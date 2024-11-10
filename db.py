@@ -1,7 +1,7 @@
 cd ~
 
 sudo apt update
-apt install -o Dpkg::Options::="--force-confold" -y --allow-unauthenticated --ignore-missing language-pack-zh-hans language-pack-zh-hans-base avahi-daemon git vim wget curl zsh libnss-mdns mdns-scan
+apt install -o Dpkg::Options::="--force-confold" -y --allow-unauthenticated --ignore-missing language-pack-zh-hans language-pack-zh-hans-base avahi-daemon git vim wget nvtop curl zsh libnss-mdns mdns-scan
 
 curl -L git.io/antigen > antigen.zsh
 
@@ -22,3 +22,7 @@ conda activate ue
 pip install tensorflow==2.14.1
 pip install tensorflow_io
 pip install boto3
+pip install -U jupyterlab
+pip install numba pandas matplotlib tqdm nbdime seaborn scikit-learn jupyter_contrib_nbextensions
+                  
+cat 'jupyter lab --ip 0.0.0.0 --port 8888 --no-browser --ContentsManager.allow_hidden=True --allow-root=True' > lab.py
