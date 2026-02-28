@@ -1,19 +1,31 @@
+#!/bin/bash
+set -euo pipefail
+
+# Check if running on a Debian/Ubuntu system
+if ! command -v apt &>/dev/null; then
+    echo "Error: This script requires apt (Debian/Ubuntu)."
+    exit 1
+fi
+
 cd ~
 
 sudo apt update
-sudo apt install language-pack-zh-hans language-pack-zh-hans-base avahi-daemon git vim wget curl zsh libnss-mdns mdns-scan python3 python-is-python3
+sudo apt install -y language-pack-zh-hans language-pack-zh-hans-base avahi-daemon git vim wget curl zsh libnss-mdns mdns-scan python3 python-is-python3 fzf
 
 sudo update-locale LANG=en_US.UTF-8
 
-curl -L git.io/antigen > antigen.zsh
+# Download antigen (zsh plugin manager)
+if [ ! -f ~/antigen.zsh ]; then
+    curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/bin/antigen.zsh -o ~/antigen.zsh
+fi
 
-wget https://raw.githubusercontent.com/lkytal/bash/main/.zshrc -O .zshrc
+# Download .zshrc
+wget https://raw.githubusercontent.com/lkytal/bash/main/.zshrc -O ~/.zshrc
 
-git clone https://github.com/wting/autojump.git
-cd autojump
-./install.py
+# Install zoxide
+if ! command -v zoxide &>/dev/null; then
+    curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+fi
 
-sudo apt install fzf
-curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
-
-chsh `whoami` -s /usr/bin/zsh
+# Switch default shell to zsh
+chsh "$(whoami)" -s /usr/bin/zsh
