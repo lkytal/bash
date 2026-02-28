@@ -1,3 +1,5 @@
+export PATH="$HOME/.local/bin:$PATH"
+
 bindkey '\e[1~' beginning-of-line
 bindkey '\e[4~' end-of-line
 bindkey '^[[H' beginning-of-line
@@ -50,5 +52,3 @@ alias sl='screen -ls'
 alias sr='screen -r'
 
 alias top='LANG=en_US.utf8 TERM=xterm-256color gtop'
-
-export PATH="$HOME/.local/bin:$PATH"
