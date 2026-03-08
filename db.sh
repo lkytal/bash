@@ -177,8 +177,23 @@ setup_vscode_tunnel() {
 
     # Download VS Code CLI if not present
     if [ ! -f "${VSCODE_CLI}" ]; then
-        info "Downloading VS Code CLI..."
-        curl -sLk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' \
+        # Detect architecture and libc to pick the correct binary
+        ARCH=$(uname -m)
+        case "${ARCH}" in
+            x86_64|amd64) ARCH_SUFFIX="x64" ;;
+            aarch64|arm64) ARCH_SUFFIX="arm64" ;;
+            *)  error "Unsupported architecture: ${ARCH}"; return 1 ;;
+        esac
+
+        # Use glibc (cli-linux-*) by default; fall back to musl (cli-alpine-*) on Alpine
+        if [ -f /etc/alpine-release ]; then
+            CLI_OS="cli-alpine-${ARCH_SUFFIX}"
+        else
+            CLI_OS="cli-linux-${ARCH_SUFFIX}"
+        fi
+
+        info "Downloading VS Code CLI (${CLI_OS})..."
+        curl -sLk "https://code.visualstudio.com/sha/download?build=stable&os=${CLI_OS}" \
             -o /tmp/vscode_cli.tar.gz
 
         if [ $? -ne 0 ]; then
