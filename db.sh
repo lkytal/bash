@@ -18,7 +18,12 @@ set -euo pipefail
 
 # ─── Configuration ───────────────────────────────────────────────────────────
 KEEPALIVE_INTERVAL=${KEEPALIVE_INTERVAL:-300}   # seconds between pings (default: 5 min)
-TUNNEL_NAME=${TUNNEL_NAME:-"databricks-dev"}    # VS Code Tunnel display name
+
+# 用 Cluster ID 或 hostname 做后缀，确保每台服务器的 Tunnel 名唯一
+CLUSTER_ID_SHORT=$(cat /databricks/init_scripts/.current_cluster_id 2>/dev/null \
+    | tail -c 8 || hostname -s)
+TUNNEL_NAME=${TUNNEL_NAME:-"db-dev-${CLUSTER_ID_SHORT}"}
+
 LOG_DIR="/tmp/devsetup"
 TUNNEL_LOG="${LOG_DIR}/tunnel.log"
 KEEPALIVE_LOG="${LOG_DIR}/keepalive.log"
