@@ -178,7 +178,7 @@ setup_vscode_tunnel() {
     # Download VS Code CLI if not present
     if [ ! -f "${VSCODE_CLI}" ]; then
         info "Downloading VS Code CLI..."
-        curl -sLk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' \
+        curl -sLk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-linux-x64' \
             -o /tmp/vscode_cli.tar.gz
 
         if [ $? -ne 0 ]; then
