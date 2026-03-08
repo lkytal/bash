@@ -20,9 +20,12 @@ set -euo pipefail
 KEEPALIVE_INTERVAL=${KEEPALIVE_INTERVAL:-300}   # seconds between pings (default: 5 min)
 
 # 用 Cluster ID 或 hostname 做后缀，确保每台服务器的 Tunnel 名唯一
+# VS Code tunnel name has a 20-char limit, so keep the suffix short
 CLUSTER_ID_SHORT=$(cat /databricks/init_scripts/.current_cluster_id 2>/dev/null \
-    | tail -c 8 || hostname -s)
-TUNNEL_NAME=${TUNNEL_NAME:-"db-dev-${CLUSTER_ID_SHORT}"}
+    | tr -d '[:space:]' | tail -c 8 || hostname -s | cut -c1-8)
+TUNNEL_NAME=${TUNNEL_NAME:-"db-${CLUSTER_ID_SHORT}"}
+# Enforce 20-char limit
+TUNNEL_NAME=$(echo "${TUNNEL_NAME}" | cut -c1-20)
 
 LOG_DIR="/tmp/devsetup"
 TUNNEL_LOG="${LOG_DIR}/tunnel.log"
